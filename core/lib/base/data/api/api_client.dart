@@ -48,4 +48,13 @@ class ApiClient {
       throw NetworkExceptions.getDioException(error);
     });
   }
+
+  Future<Response<T>> get<T>({required String path, IJsonParcelable? queryParameters}) {
+    return dio.get<T>(
+      path,
+      queryParameters: queryParameters != null ? queryParameters.toJson() : <String, dynamic>{},
+    ).catchError((error) { 
+      throw NetworkExceptions.getDioException(error);
+    });
+  }
 }

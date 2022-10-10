@@ -13,5 +13,5 @@ class AppConfigParams with _$AppConfigParams {
   }) = _AppConfigParams;
 
   factory AppConfigParams.fromJson(Map<String, Object?> json)
-      => _$$_AppConfigParamsFromJson(json);
+      => _$AppConfigParamsFromJson(json);
 }

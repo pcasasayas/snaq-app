@@ -52,88 +52,28 @@ class OnBoardingCarouselWidget extends BaseWidgetStatelessBlocListener<OnBoarded
   }
 
   Widget _buildImage(String assetName) {
-    return Container();
-    // return Image.asset('assets/$assetName', width: width);
+    return Image.asset('assets/$assetName', width: double.infinity);
   }
 
   List<PageViewModel> buildPages(BuildContext context, PageDecoration pageDecoration) {
     return [
       PageViewModel(
-        title: "Fractional shares",
-        body:
-        "Instead of having to buy an entire share, invest any amount you want.",
-        image: _buildImage('img1.jpg'),
+        title: 'Discover',
+        body: 'Discover new meals',
+        image: _buildImage('images/snaq-logo.png'),
         decoration: pageDecoration,
       ),
       PageViewModel(
-        title: "Learn as you go",
-        body:
-        "Download the Stockpile app and master the market with our mini-lesson.",
-        image: _buildImage('img2.jpg'),
+        title: 'Explore',
+        body: 'Explore the meals on a great variety of plates',
+        image: _buildImage('images/snaq-logo.png'),
         decoration: pageDecoration,
       ),
       PageViewModel(
-        title: "Kids and teens",
-        body:
-        "Kids and teens can track their stocks 24/7 and place trades that you approve.",
-        image: _buildImage('img3.jpg'),
+        title: 'Examine',
+        body: 'Examine the nutrition properties of your meals',
+        image: _buildImage('images/snaq-logo.png'),
         decoration: pageDecoration,
-      ),
-      PageViewModel(
-        title: "Full Screen Page",
-        body:
-        "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
-        image: _buildFullscreenImage(),
-        decoration: pageDecoration.copyWith(
-          contentMargin: const EdgeInsets.symmetric(horizontal: 16),
-          fullScreen: true,
-          bodyFlex: 2,
-          imageFlex: 3,
-        ),
-      ),
-      PageViewModel(
-        title: "Another title page",
-        body: "Another beautiful body text for this example onboarding",
-        image: _buildImage('img2.jpg'),
-        footer: ElevatedButton(
-          onPressed: () {
-            // introKey.currentState?.animateScroll(0);
-            FlashbarHelper.showFlashbar(
-              context, 
-              builder: FlashbarInfoWidget.builder,
-            );
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.lightBlue,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-          ),
-          child: const Text(
-            'FooButton',
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-        decoration: pageDecoration,
-      ),
-      PageViewModel(
-        title: "Title of last page - reversed",
-        bodyWidget: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text("Click on "),
-            Icon(Icons.edit),
-            Text(" to edit a post"),
-          ],
-        ),
-        decoration: pageDecoration.copyWith(
-          bodyFlex: 2,
-          imageFlex: 4,
-          bodyAlignment: Alignment.bottomCenter,
-          imageAlignment: Alignment.topCenter,
-        ),
-        image: _buildImage('img1.jpg'),
-        reverse: true,
       ),
     ];
   }
@@ -147,21 +87,21 @@ class OnBoardingCarouselWidget extends BaseWidgetStatelessBlocListener<OnBoarded
       bodyTextStyle: bodyStyle,
       bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
       pageColor: Colors.white,
-      imagePadding: EdgeInsets.zero,
+      imagePadding: EdgeInsets.symmetric(vertical: 16.0),
     );
 
     return IntroductionScreen(
       key: introKey,
       globalBackgroundColor: Colors.white,
-      globalHeader: Align(
-        alignment: Alignment.topRight,
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 16, right: 16),
-            child: _buildImage('flutter.png'),
-          ),
-        ),
-      ),
+      // globalHeader: Align(
+      //   alignment: Alignment.topRight,
+      //   child: SafeArea(
+      //     child: Padding(
+      //       padding: const EdgeInsets.only(top: 16, right: 16),
+      //       child: _buildImage('images/snaq-logo.png'),
+      //     ),
+      //   ),
+      // ),
       pages: buildPages(context, pageDecoration),
       onDone: () => context.read<OnBoardedSetCubit>().setOnBoarded(true),
       onSkip: () => context.read<OnBoardedSetCubit>().setOnBoarded(true),

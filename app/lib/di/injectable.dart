@@ -6,6 +6,6 @@ import 'package:core/di/injectable.config.dart' as coredi;
 
 @injectableInit
 GetIt configureDependencies() {
-  final getIt = $initGetIt(GetIt.instance);
-  return coredi.$initGetIt(getIt);
+  final getIt = coredi.$initGetIt(GetIt.instance);
+  return $initGetIt(getIt);
 }
